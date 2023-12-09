@@ -1,0 +1,28 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> Books Available </h1>
+  </div>
+
+  <div class="box">
+ 
+   <% newListItems.forEach(function(item){ %>
+     <form action="/api/books/<%= item._id %>" method="post">
+      <div class="item">
+        <input type="text" name="updatedBook" placeholder="Updated Book" autocomplete="off">
+        <p><%=  item.name %></p>
+        <p><%=  item.author %></p>
+        <button type="submit" name="list" value = "Books Available">+</button>
+      </div>
+      <input type="hidden" name = "listName" value = "Books Available"></input>
+     </form>
+      
+    <% }) %>
+
+      <form class="item" action="/api/books" method="post">
+        <input type="text" name="newBook" placeholder="New Book" autocomplete="off">
+        <button type="submit" name="list" value = "Books Available">+</button>
+      </form>
+  </div>
+
+<%- include("footer") -%>
